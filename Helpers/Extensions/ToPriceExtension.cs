@@ -1,5 +1,5 @@
 using System.Globalization;
-namespace Backend.Helpers;
+namespace Backend.Helpers.Extensions;
 
 public static class ToPriceExtension
 {

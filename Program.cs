@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using Backend.Services;
 using Backend.Interfaces.Beer;
 using Backend.Models;
+using Backend.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,15 +32,14 @@ app.UseCors( x => x
     .AllowAnyHeader()
 );
 
-
-
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseAuthorization();
 

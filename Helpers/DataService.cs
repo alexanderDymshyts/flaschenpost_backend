@@ -2,6 +2,7 @@ namespace Backend.Helpers;
 
 using System.Net.Http;
 using System.Net.Http.Json;
+using Backend.Helpers.CustomExceptions;
 using Backend.Models;
 
 public static class DataService
@@ -22,7 +23,7 @@ public static class DataService
         {
             PooledConnectionLifetime = TimeSpan.FromMinutes(2)
         };
-
+        
         _httpClient = new HttpClient(socketsHandler);
     }
 
@@ -39,7 +40,9 @@ public static class DataService
         catch(Exception ex)
         {
             // Log in grafana/kibana
-            return null;
+
+            // Just an example how exception middleware can be used. But it's better not to throw exception - better way to handle exception and send back some result.
+            throw new AppException(ex.Message); 
         }
     }
 

@@ -44,6 +44,28 @@ public class BeerController: ControllerBase
         return new OkObjectResult(beers.Where(x => x.Price.HasValue && x.Price <= 2));
     }
 
+    [HttpGet]
+    [Route("/beer/asc")]
+    public async Task<IActionResult> GetAllAscAsync()
+    {
+        var beers = await _beerService.GetBeersAsync();
+        if(null == beers)
+            return new NotFoundResult();
+
+        return new OkObjectResult(beers.OrderBy(x => x.Price));
+    }
+
+    [HttpGet]
+    [Route("/beer/desc")]
+    public async Task<IActionResult> GetAllDescAsync()
+    {
+        var beers = await _beerService.GetBeersAsync();
+        if(null == beers)
+            return new NotFoundResult();
+
+        return new OkObjectResult(beers.OrderByDescending(x => x.Price));
+    }
+
     #endregion Methods
 
 }

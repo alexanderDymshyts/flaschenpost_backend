@@ -63,7 +63,8 @@ public class BeerController: ControllerBase
         if(null == beers)
             return new NotFoundObjectResult("Beer not found");
 
-        return new OkObjectResult(beers.OrderByDescending(x => x.Price));
+        return new OkObjectResult(beers.OrderByDescending(x => x.Price
+        ));
     }
 
     #endregion Methods

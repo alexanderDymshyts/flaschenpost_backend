@@ -13,7 +13,7 @@ public class BeerDto
 
     public string Description { get; set; } = string.Empty;
 
-    public string Img { get; set; } = string.Empty;
+    public string ImageUrl { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
      
@@ -33,7 +33,7 @@ public class BeerDto
             {
                 Id = article.Id,
                 Description = article.ShortDescription,
-                Img = article.Image,
+                ImageUrl = article.Image,
                 Name = beer.Name,
                 Price = article.PricePerUnitText.ToPrice(),
                 Currency = article.PricePerUnitText.ToCurrency()

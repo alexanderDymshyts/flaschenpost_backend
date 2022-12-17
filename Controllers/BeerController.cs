@@ -28,7 +28,7 @@ public class BeerController: ControllerBase
     {
         var beers = await _beerService.GetBeersAsync();
         if(null == beers)
-            return new NotFoundResult();
+            return new NotFoundObjectResult("Beer not found");
 
         return new OkObjectResult(beers);
     }
@@ -39,7 +39,7 @@ public class BeerController: ControllerBase
     {
         var beers = await _beerService.GetBeersAsync();
         if(null == beers)
-            return new NotFoundResult();
+            return new NotFoundObjectResult("Beer not found");
 
         return new OkObjectResult(beers.Where(x => x.Price.HasValue && x.Price <= 2));
     }
@@ -50,7 +50,7 @@ public class BeerController: ControllerBase
     {
         var beers = await _beerService.GetBeersAsync();
         if(null == beers)
-            return new NotFoundResult();
+            return new NotFoundObjectResult("Beer not found");
 
         return new OkObjectResult(beers.OrderBy(x => x.Price));
     }
@@ -61,7 +61,7 @@ public class BeerController: ControllerBase
     {
         var beers = await _beerService.GetBeersAsync();
         if(null == beers)
-            return new NotFoundResult();
+            return new NotFoundObjectResult("Beer not found");
 
         return new OkObjectResult(beers.OrderByDescending(x => x.Price));
     }
